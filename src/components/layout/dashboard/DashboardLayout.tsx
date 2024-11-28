@@ -112,7 +112,6 @@ export default function DashboardLayoutComponent({
       </SidebarWrapper>
       <div className="flex-1 h-screen overflow-y-auto overflow-x-hidden relative flex flex-col">
         {children}
-        <Footer />
       </div>
     </div>
   );

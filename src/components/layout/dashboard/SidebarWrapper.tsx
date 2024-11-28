@@ -10,6 +10,7 @@ import { Fragment, ReactNode, useCallback, useState } from "react";
 import useOrganizationStore from "@/hooks/use-organizations";
 import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/popover";
 import { Listbox, ListboxItem, ListboxSection } from "@nextui-org/listbox";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function SidebarWrapper({
   isColorful,
@@ -74,9 +75,19 @@ export default function SidebarWrapper({
                 )}
               </Fragment>
             ) : (
-              <div className="text-small font-medium text-default-500">
-                Please select
-              </div>
+              <Fragment>
+                <Icon icon="solar:question-circle-broken" width={32} />
+                {!isCompact && (
+                  <div className="flex flex-col">
+                    <p className="text-small font-medium text-default-500">
+                      Please Select
+                    </p>
+                    <p className="text-tiny text-default-400">
+                      Select your organization
+                    </p>
+                  </div>
+                )}
+              </Fragment>
             )}
           </div>
         </PopoverTrigger>

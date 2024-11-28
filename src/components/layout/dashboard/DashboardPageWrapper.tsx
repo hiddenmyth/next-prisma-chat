@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Button } from "@nextui-org/button";
 import { cn } from "@nextui-org/theme";
 import { ReactNode } from "react";
+import Footer from "./Footer";
 
 export default function DashboardPageWrapper({
   children,
@@ -18,7 +19,7 @@ export default function DashboardPageWrapper({
   const { isColorful, isCollapsed, onOpenChange } = useDashboardLayoutStore();
 
   return (
-    <main className="flex-1 w-full relative flex flex-col gap-4 p-4 mx-auto container">
+    <main className="flex-1 w-full relative flex flex-col gap-4 p-4 container mx-auto">
       <div className={cn("border border-divider rounded-xl p-4 flex items-center gap-4", {
         "bg-gradient-to-r from-default-100 via-danger-100 to-secondary-100": isColorful
       })}>
@@ -38,6 +39,7 @@ export default function DashboardPageWrapper({
         </div>
       </div>
       <div className="flex-1 border border-divider rounded-xl p-4">{children}</div>
+      <Footer />
     </main>
   );
 }
