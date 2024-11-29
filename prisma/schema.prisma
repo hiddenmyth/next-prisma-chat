@@ -19,6 +19,15 @@ model User {
   @@map("users")
 }
 
+model Organization {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  image       String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+}
+
 model Post {
   id        String  @id @default(cuid())
   title     String

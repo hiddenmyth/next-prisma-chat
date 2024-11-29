@@ -10,7 +10,6 @@ import { cn } from '@nextui-org/theme';
 const ProfileAvatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
   ({ name, className, classNames = {}, ...props }, ref) => (
     <Avatar
-      {...props}
       ref={ref}
       classNames={{
         ...classNames,
@@ -23,6 +22,7 @@ const ProfileAvatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
       name={name}
       radius="md"
       size="sm"
+      {...props}
     />
   ),
 );
