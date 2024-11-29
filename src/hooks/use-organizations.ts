@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
 export interface IOrganization {
   name: string;
@@ -15,8 +15,8 @@ export interface IOrganizationStore {
 
 const useOrganizationStore = create<IOrganizationStore>((set, get) => ({
   data: [
-    { name: "NextUI", description: "Frontend Library" },
-    { name: "NextJS", description: "Full stack framework" },
+    { name: 'NextUI', description: 'Frontend Library' },
+    { name: 'NextJS', description: 'Full stack framework' },
   ],
   setData: (data) => {
     set({ data });

@@ -1,10 +1,6 @@
-import { Fragment, ReactNode } from "react";
+import { Fragment, ReactNode } from 'react';
 
-import {
-  Modal,
-  ModalBody,
-  ModalContent,
-} from "@nextui-org/modal";
+import { Modal, ModalBody, ModalContent } from '@nextui-org/modal';
 
 export default function SidebarModalWrapper({
   children,
@@ -19,10 +15,10 @@ export default function SidebarModalWrapper({
     <Fragment>
       <Modal
         classNames={{
-          base: "justify-start sm:m-0 p-0 h-dvh max-h-full",
-          wrapper: "sm:items-start sm:justify-start w-72 !overflow-x-hidden",
-          body: "p-0",
-          closeButton: "z-50",
+          base: 'justify-start sm:m-0 p-0 h-dvh max-h-full',
+          wrapper: 'sm:items-start sm:justify-start w-72 !overflow-x-hidden',
+          body: 'p-0',
+          closeButton: 'z-50',
         }}
         className="!overflow-x-hidden"
         isOpen={isOpen}
@@ -32,14 +28,14 @@ export default function SidebarModalWrapper({
               x: 0,
               transition: {
                 duration: 0.3,
-                ease: "easeOut",
+                ease: 'easeOut',
               },
             },
             exit: {
               x: -288,
               transition: {
                 duration: 0.2,
-                ease: "easeOut",
+                ease: 'easeOut',
               },
             },
           },

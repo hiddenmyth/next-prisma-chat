@@ -1,22 +1,17 @@
-"use client";
+'use client';
 
-import { ReactNode, useCallback, useEffect, useState } from "react";
-import SidebarModalWrapper from "./SidebarModalWrapper";
-import SidebarWrapper from "./SidebarWrapper";
-import { useMediaQuery } from "usehooks-ts";
-import { Button } from "@nextui-org/button";
-import { Icon } from "@iconify/react";
-import ThemeSwitcher from "@/components/common/ThemeSwitcher";
-import { Switch } from "@nextui-org/switch";
-import { cn } from "@nextui-org/theme";
-import useDashboardLayoutStore from "@/hooks/use-dashboard-layout";
-import Footer from "./Footer";
+import { ReactNode, useCallback, useEffect, useState } from 'react';
+import SidebarModalWrapper from './SidebarModalWrapper';
+import SidebarWrapper from './SidebarWrapper';
+import { useMediaQuery } from 'usehooks-ts';
+import { Button } from '@nextui-org/button';
+import { Icon } from '@iconify/react';
+import ThemeSwitcher from '@/components/common/ThemeSwitcher';
+import { Switch } from '@nextui-org/switch';
+import { cn } from '@nextui-org/theme';
+import useDashboardLayoutStore from '@/hooks/use-dashboard-layout';
 
-export default function DashboardLayoutComponent({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function DashboardLayoutComponent({ children }: { children: ReactNode }) {
   const {
     isCollapsed,
     onClose,
@@ -27,45 +22,39 @@ export default function DashboardLayoutComponent({
     isColorful,
   } = useDashboardLayoutStore();
 
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const renderFooter = useCallback(
     (props: { onOpenChange?: () => void; isOpen?: boolean }) => {
       return (
         <div
-          className={cn("mt-auto flex flex-col text-default-500 relative", {
-            "pr-6": props.isOpen,
+          className={cn('mt-auto flex flex-col text-default-500 relative', {
+            'pr-6': props.isOpen,
           })}
         >
-          <div className={cn({ "pl-3": !!props.isOpen })}>
+          <div className={cn({ 'pl-3': !!props.isOpen })}>
             <Switch
               size="sm"
               color="secondary"
               isSelected={isColorful}
               onValueChange={setIsColorful}
             >
-              {!!props.isOpen ? "Colorful" : null}
+              {!!props.isOpen ? 'Colorful' : null}
             </Switch>
           </div>
           <ThemeSwitcher
-            className={cn(
-              "text-default-500 data-[hover=true]:text-foreground",
-              {
-                "!w-full !justify-start": props.isOpen,
-              }
-            )}
+            className={cn('text-default-500 data-[hover=true]:text-foreground', {
+              '!w-full !justify-start': props.isOpen,
+            })}
             variant="light"
             isIconOnly={!props.isOpen}
           >
-            {props.isOpen ? "Light/Dark" : null}
+            {props.isOpen ? 'Light/Dark' : null}
           </ThemeSwitcher>
           <Button
-            className={cn(
-              "text-default-500 data-[hover=true]:text-foreground",
-              {
-                "!w-full !justify-start": props.isOpen,
-              }
-            )}
+            className={cn('text-default-500 data-[hover=true]:text-foreground', {
+              '!w-full !justify-start': props.isOpen,
+            })}
             variant="light"
             isIconOnly={!props.isOpen}
             onClick={() => {
@@ -75,17 +64,17 @@ export default function DashboardLayoutComponent({
             <Icon
               icon={
                 !props.isOpen
-                  ? "material-symbols:expand-circle-right-outline-rounded"
-                  : "material-symbols:arrow-circle-left-outline-rounded"
+                  ? 'material-symbols:expand-circle-right-outline-rounded'
+                  : 'material-symbols:arrow-circle-left-outline-rounded'
               }
               width={24}
             />
-            {props.isOpen ? "Collapse Sidebar" : null}
+            {props.isOpen ? 'Collapse Sidebar' : null}
           </Button>
         </div>
       );
     },
-    [isColorful, isCollapsed, isMobile]
+    [isColorful, isCollapsed, isMobile],
   );
 
   return (

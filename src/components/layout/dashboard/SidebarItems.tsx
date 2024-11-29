@@ -1,8 +1,8 @@
-import {Chip} from "@nextui-org/chip";
-import {Icon} from "@iconify/react";
+import { Chip } from '@nextui-org/chip';
+import { Icon } from '@iconify/react';
 
-import {SidebarItemType, type SidebarItem} from "./Sidebar";
-import ProfileAvatar from "./ProfileAvatar";
+import { SidebarItemType, type SidebarItem } from './Sidebar';
+import ProfileAvatar from './ProfileAvatar';
 
 /**
  * Please check the https://nextui.org/docs/guide/routing to have a seamless router integration
@@ -10,40 +10,48 @@ import ProfileAvatar from "./ProfileAvatar";
 
 export const items: SidebarItem[] = [
   {
-    key: "home",
-    href: "/home",
-    icon: "solar:home-2-linear",
-    title: "Home",
+    key: 'home',
+    href: '/home',
+    icon: 'solar:home-2-linear',
+    title: 'Home',
   },
   {
-    key: "projects",
-    href: "/projects",
-    icon: "solar:widget-2-outline",
-    title: "Projects",
+    key: 'projects',
+    href: '/projects',
+    icon: 'solar:widget-2-outline',
+    title: 'Projects',
     endContent: (
-      <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
+      <Icon
+        className="text-default-400"
+        icon="solar:add-circle-line-duotone"
+        width={24}
+      />
     ),
   },
   {
-    key: "tasks",
-    href: "/tasks",
-    icon: "solar:checklist-minimalistic-outline",
-    title: "Tasks",
+    key: 'tasks',
+    href: '/tasks',
+    icon: 'solar:checklist-minimalistic-outline',
+    title: 'Tasks',
     endContent: (
-      <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
+      <Icon
+        className="text-default-400"
+        icon="solar:add-circle-line-duotone"
+        width={24}
+      />
     ),
   },
   {
-    key: "team",
-    href: "/team",
-    icon: "solar:users-group-two-rounded-outline",
-    title: "Team",
+    key: 'team',
+    href: '/team',
+    icon: 'solar:users-group-two-rounded-outline',
+    title: 'Team',
   },
   {
-    key: "tracker",
-    href: "/tracker",
-    icon: "solar:sort-by-time-linear",
-    title: "Tracker",
+    key: 'tracker',
+    href: '/tracker',
+    icon: 'solar:sort-by-time-linear',
+    title: 'Tracker',
     endContent: (
       <Chip size="sm" variant="flat">
         New
@@ -51,16 +59,16 @@ export const items: SidebarItem[] = [
     ),
   },
   {
-    key: "analytics",
-    href: "/analytics",
-    icon: "solar:chart-outline",
-    title: "Analytics",
+    key: 'analytics',
+    href: '/analytics',
+    icon: 'solar:chart-outline',
+    title: 'Analytics',
   },
   {
-    key: "perks",
-    href: "/perks",
-    icon: "solar:gift-linear",
-    title: "Perks",
+    key: 'perks',
+    href: '/perks',
+    icon: 'solar:gift-linear',
+    title: 'Perks',
     endContent: (
       <Chip size="sm" variant="flat">
         3
@@ -68,59 +76,67 @@ export const items: SidebarItem[] = [
     ),
   },
   {
-    key: "expenses",
-    href: "/expenses",
-    icon: "solar:bill-list-outline",
-    title: "Expenses",
+    key: 'expenses',
+    href: '/expenses',
+    icon: 'solar:bill-list-outline',
+    title: 'Expenses',
   },
   {
-    key: "settings",
-    href: "/settings",
-    icon: "solar:settings-outline",
-    title: "Settings",
+    key: 'settings',
+    href: '/settings',
+    icon: 'solar:settings-outline',
+    title: 'Settings',
   },
 ];
 
 export const sectionItems: SidebarItem[] = [
   {
-    key: "overview",
-    title: "Overview",
+    key: 'overview',
+    title: 'Overview',
     items: [
       {
-        key: "home",
-        href: "/home",
-        icon: "solar:home-2-linear",
-        title: "Home",
+        key: 'home',
+        href: '/home',
+        icon: 'solar:home-2-linear',
+        title: 'Home',
       },
       {
-        key: "projects",
-        href: "/projects",
-        icon: "solar:widget-2-outline",
-        title: "Projects",
+        key: 'projects',
+        href: '/projects',
+        icon: 'solar:widget-2-outline',
+        title: 'Projects',
         endContent: (
-          <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
+          <Icon
+            className="text-default-400"
+            icon="solar:add-circle-line-duotone"
+            width={24}
+          />
         ),
       },
       {
-        key: "tasks",
-        href: "/tasks",
-        icon: "solar:checklist-minimalistic-outline",
-        title: "Tasks",
+        key: 'tasks',
+        href: '/tasks',
+        icon: 'solar:checklist-minimalistic-outline',
+        title: 'Tasks',
         endContent: (
-          <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
+          <Icon
+            className="text-default-400"
+            icon="solar:add-circle-line-duotone"
+            width={24}
+          />
         ),
       },
       {
-        key: "team",
-        href: "/team",
-        icon: "solar:users-group-two-rounded-outline",
-        title: "Team",
+        key: 'team',
+        href: '/team',
+        icon: 'solar:users-group-two-rounded-outline',
+        title: 'Team',
       },
       {
-        key: "tracker",
-        href: "/tracker",
-        icon: "solar:sort-by-time-linear",
-        title: "Tracker",
+        key: 'tracker',
+        href: '/tracker',
+        icon: 'solar:sort-by-time-linear',
+        title: 'Tracker',
         endContent: (
           <Chip size="sm" variant="flat">
             New
@@ -130,44 +146,44 @@ export const sectionItems: SidebarItem[] = [
     ],
   },
   {
-    key: "organization",
-    title: "Organization",
+    key: 'organization',
+    title: 'Organization',
     itemType: SidebarItemType.nested,
     items: [
       {
-        key: "cap_table",
-        href: "/cap_table",
-        title: "Cap Table",
-        icon: "solar:pie-chart-2-outline",
+        key: 'cap_table',
+        href: '/cap_table',
+        title: 'Cap Table',
+        icon: 'solar:pie-chart-2-outline',
         items: [
           {
-            key: "shareholders",
-            href: "/cap_table=shareholders",
-            title: "Shareholders",
+            key: 'shareholders',
+            href: '/cap_table=shareholders',
+            title: 'Shareholders',
           },
           {
-            key: "note_holders",
-            href: "/cap_table=note_holders",
-            title: "Note Holders",
+            key: 'note_holders',
+            href: '/cap_table=note_holders',
+            title: 'Note Holders',
           },
           {
-            key: "transactions_log",
-            href: "/cap_table=transactions_log",
-            title: "Transactions Log",
+            key: 'transactions_log',
+            href: '/cap_table=transactions_log',
+            title: 'Transactions Log',
           },
         ],
       },
       {
-        key: "analytics",
-        href: "/analytics",
-        icon: "solar:chart-outline",
-        title: "Analytics",
+        key: 'analytics',
+        href: '/analytics',
+        icon: 'solar:chart-outline',
+        title: 'Analytics',
       },
       {
-        key: "perks",
-        href: "/perks",
-        icon: "solar:gift-linear",
-        title: "Perks",
+        key: 'perks',
+        href: '/perks',
+        icon: 'solar:gift-linear',
+        title: 'Perks',
         endContent: (
           <Chip size="sm" variant="flat">
             3
@@ -175,16 +191,16 @@ export const sectionItems: SidebarItem[] = [
         ),
       },
       {
-        key: "expenses",
-        href: "/expenses",
-        icon: "solar:bill-list-outline",
-        title: "Expenses",
+        key: 'expenses',
+        href: '/expenses',
+        icon: 'solar:bill-list-outline',
+        title: 'Expenses',
       },
       {
-        key: "settings",
-        href: "/settings",
-        icon: "solar:settings-outline",
-        title: "Settings",
+        key: 'settings',
+        href: '/settings',
+        icon: 'solar:settings-outline',
+        title: 'Settings',
       },
     ],
   },
@@ -193,25 +209,25 @@ export const sectionItems: SidebarItem[] = [
 export const sectionItemsWithTeams: SidebarItem[] = [
   ...sectionItems,
   {
-    key: "your-teams",
-    title: "Your Teams",
+    key: 'your-teams',
+    title: 'Your Teams',
     items: [
       {
-        key: "nextui",
-        href: "/nextui",
-        title: "NextUI",
+        key: 'nextui',
+        href: '/nextui',
+        title: 'NextUI',
         startContent: <ProfileAvatar name="Next UI" />,
       },
       {
-        key: "tailwind-variants",
-        href: "/tailwind-variants",
-        title: "Tailwind Variants",
+        key: 'tailwind-variants',
+        href: '/tailwind-variants',
+        title: 'Tailwind Variants',
         startContent: <ProfileAvatar name="Tailwind Variants" />,
       },
       {
-        key: "nextui-pro",
-        href: "/nextui-pro",
-        title: "NextUI Pro",
+        key: 'nextui-pro',
+        href: '/nextui-pro',
+        title: 'NextUI Pro',
         startContent: <ProfileAvatar name="NextUI Pro" />,
       },
     ],
@@ -220,20 +236,20 @@ export const sectionItemsWithTeams: SidebarItem[] = [
 
 export const brandItems: SidebarItem[] = [
   {
-    key: "overview",
-    title: "Overview",
+    key: 'overview',
+    title: 'Overview',
     items: [
       {
-        key: "home",
-        href: "/home",
-        icon: "solar:home-2-linear",
-        title: "Home",
+        key: 'home',
+        href: '/home',
+        icon: 'solar:home-2-linear',
+        title: 'Home',
       },
       {
-        key: "projects",
-        href: "/projects",
-        icon: "solar:widget-2-outline",
-        title: "Projects",
+        key: 'projects',
+        href: '/projects',
+        icon: 'solar:widget-2-outline',
+        title: 'Projects',
         endContent: (
           <Icon
             className="text-primary-foreground/60"
@@ -243,10 +259,10 @@ export const brandItems: SidebarItem[] = [
         ),
       },
       {
-        key: "tasks",
-        href: "/tasks",
-        icon: "solar:checklist-minimalistic-outline",
-        title: "Tasks",
+        key: 'tasks',
+        href: '/tasks',
+        icon: 'solar:checklist-minimalistic-outline',
+        title: 'Tasks',
         endContent: (
           <Icon
             className="text-primary-foreground/60"
@@ -256,18 +272,22 @@ export const brandItems: SidebarItem[] = [
         ),
       },
       {
-        key: "team",
-        href: "/team",
-        icon: "solar:users-group-two-rounded-outline",
-        title: "Team",
+        key: 'team',
+        href: '/team',
+        icon: 'solar:users-group-two-rounded-outline',
+        title: 'Team',
       },
       {
-        key: "tracker",
-        href: "/tracker",
-        icon: "solar:sort-by-time-linear",
-        title: "Tracker",
+        key: 'tracker',
+        href: '/tracker',
+        icon: 'solar:sort-by-time-linear',
+        title: 'Tracker',
         endContent: (
-          <Chip className="bg-primary-foreground font-medium text-primary" size="sm" variant="flat">
+          <Chip
+            className="bg-primary-foreground font-medium text-primary"
+            size="sm"
+            variant="flat"
+          >
             New
           </Chip>
         ),
@@ -275,46 +295,46 @@ export const brandItems: SidebarItem[] = [
     ],
   },
   {
-    key: "your-teams",
-    title: "Your Teams",
+    key: 'your-teams',
+    title: 'Your Teams',
     items: [
       {
-        key: "nextui",
-        href: "/nextui",
-        title: "NextUI",
+        key: 'nextui',
+        href: '/nextui',
+        title: 'NextUI',
         startContent: (
           <ProfileAvatar
             classNames={{
-              base: "border-1 border-primary-foreground/20",
-              name: "text-primary-foreground/80",
+              base: 'border-1 border-primary-foreground/20',
+              name: 'text-primary-foreground/80',
             }}
             name="Next UI"
           />
         ),
       },
       {
-        key: "tailwind-variants",
-        href: "/tailwind-variants",
-        title: "Tailwind Variants",
+        key: 'tailwind-variants',
+        href: '/tailwind-variants',
+        title: 'Tailwind Variants',
         startContent: (
           <ProfileAvatar
             classNames={{
-              base: "border-1 border-primary-foreground/20",
-              name: "text-primary-foreground/80",
+              base: 'border-1 border-primary-foreground/20',
+              name: 'text-primary-foreground/80',
             }}
             name="Tailwind Variants"
           />
         ),
       },
       {
-        key: "nextui-pro",
-        href: "/nextui-pro",
-        title: "NextUI Pro",
+        key: 'nextui-pro',
+        href: '/nextui-pro',
+        title: 'NextUI Pro',
         startContent: (
           <ProfileAvatar
             classNames={{
-              base: "border-1 border-primary-foreground/20",
-              name: "text-primary-foreground/80",
+              base: 'border-1 border-primary-foreground/20',
+              name: 'text-primary-foreground/80',
             }}
             name="NextUI Pro"
           />
@@ -327,61 +347,61 @@ export const brandItems: SidebarItem[] = [
 export const sectionLongList: SidebarItem[] = [
   ...sectionItems,
   {
-    key: "payments",
-    title: "Payments",
+    key: 'payments',
+    title: 'Payments',
     items: [
       {
-        key: "payroll",
-        href: "/payroll",
-        title: "Payroll",
-        icon: "solar:dollar-minimalistic-linear",
+        key: 'payroll',
+        href: '/payroll',
+        title: 'Payroll',
+        icon: 'solar:dollar-minimalistic-linear',
       },
       {
-        key: "invoices",
-        href: "/invoices",
-        title: "Invoices",
-        icon: "solar:file-text-linear",
+        key: 'invoices',
+        href: '/invoices',
+        title: 'Invoices',
+        icon: 'solar:file-text-linear',
       },
       {
-        key: "billing",
-        href: "/billing",
-        title: "Billing",
-        icon: "solar:card-outline",
+        key: 'billing',
+        href: '/billing',
+        title: 'Billing',
+        icon: 'solar:card-outline',
       },
       {
-        key: "payment-methods",
-        href: "/payment-methods",
-        title: "Payment Methods",
-        icon: "solar:wallet-money-outline",
+        key: 'payment-methods',
+        href: '/payment-methods',
+        title: 'Payment Methods',
+        icon: 'solar:wallet-money-outline',
       },
       {
-        key: "payouts",
-        href: "/payouts",
-        title: "Payouts",
-        icon: "solar:card-transfer-outline",
+        key: 'payouts',
+        href: '/payouts',
+        title: 'Payouts',
+        icon: 'solar:card-transfer-outline',
       },
     ],
   },
   {
-    key: "your-teams",
-    title: "Your Teams",
+    key: 'your-teams',
+    title: 'Your Teams',
     items: [
       {
-        key: "nextui",
-        href: "/nextui",
-        title: "NextUI",
+        key: 'nextui',
+        href: '/nextui',
+        title: 'NextUI',
         startContent: <ProfileAvatar name="Next UI" />,
       },
       {
-        key: "tailwind-variants",
-        href: "/tailwind-variants",
-        title: "Tailwind Variants",
+        key: 'tailwind-variants',
+        href: '/tailwind-variants',
+        title: 'Tailwind Variants',
         startContent: <ProfileAvatar name="Tailwind Variants" />,
       },
       {
-        key: "nextui-pro",
-        href: "/nextui-pro",
-        title: "NextUI Pro",
+        key: 'nextui-pro',
+        href: '/nextui-pro',
+        title: 'NextUI Pro',
         startContent: <ProfileAvatar name="NextUI Pro" />,
       },
     ],
@@ -390,40 +410,48 @@ export const sectionLongList: SidebarItem[] = [
 
 export const sectionNestedItems: SidebarItem[] = [
   {
-    key: "home",
-    href: "/home",
-    icon: "solar:home-2-linear",
-    title: "Home",
+    key: 'home',
+    href: '/home',
+    icon: 'solar:home-2-linear',
+    title: 'Home',
   },
   {
-    key: "projects",
-    href: "/projects",
-    icon: "solar:widget-2-outline",
-    title: "Projects",
+    key: 'projects',
+    href: '/projects',
+    icon: 'solar:widget-2-outline',
+    title: 'Projects',
     endContent: (
-      <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
+      <Icon
+        className="text-default-400"
+        icon="solar:add-circle-line-duotone"
+        width={24}
+      />
     ),
   },
   {
-    key: "tasks",
-    href: "/tasks",
-    icon: "solar:checklist-minimalistic-outline",
-    title: "Tasks",
+    key: 'tasks',
+    href: '/tasks',
+    icon: 'solar:checklist-minimalistic-outline',
+    title: 'Tasks',
     endContent: (
-      <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
+      <Icon
+        className="text-default-400"
+        icon="solar:add-circle-line-duotone"
+        width={24}
+      />
     ),
   },
   {
-    key: "team",
-    href: "/team",
-    icon: "solar:users-group-two-rounded-outline",
-    title: "Team",
+    key: 'team',
+    href: '/team',
+    icon: 'solar:users-group-two-rounded-outline',
+    title: 'Team',
   },
   {
-    key: "tracker",
-    href: "/tracker",
-    icon: "solar:sort-by-time-linear",
-    title: "Tracker",
+    key: 'tracker',
+    href: '/tracker',
+    icon: 'solar:sort-by-time-linear',
+    title: 'Tracker',
     endContent: (
       <Chip size="sm" variant="flat">
         New
@@ -431,16 +459,16 @@ export const sectionNestedItems: SidebarItem[] = [
     ),
   },
   {
-    key: "analytics",
-    href: "/analytics",
-    icon: "solar:chart-outline",
-    title: "Analytics",
+    key: 'analytics',
+    href: '/analytics',
+    icon: 'solar:chart-outline',
+    title: 'Analytics',
   },
   {
-    key: "perks",
-    href: "/perks",
-    icon: "solar:gift-linear",
-    title: "Perks",
+    key: 'perks',
+    href: '/perks',
+    icon: 'solar:gift-linear',
+    title: 'Perks',
     endContent: (
       <Chip size="sm" variant="flat">
         3
@@ -448,35 +476,35 @@ export const sectionNestedItems: SidebarItem[] = [
     ),
   },
   {
-    key: "cap_table",
-    title: "Cap Table",
-    icon: "solar:pie-chart-2-outline",
+    key: 'cap_table',
+    title: 'Cap Table',
+    icon: 'solar:pie-chart-2-outline',
     itemType: SidebarItemType.nested,
     items: [
       {
-        key: "shareholders",
-        icon: "solar:users-group-rounded-linear",
-        href: "/cap_table=shareholders",
-        title: "Shareholders",
+        key: 'shareholders',
+        icon: 'solar:users-group-rounded-linear',
+        href: '/cap_table=shareholders',
+        title: 'Shareholders',
       },
       {
-        key: "note_holders",
-        icon: "solar:notes-outline",
-        href: "/cap_table=note_holders",
-        title: "Note Holders",
+        key: 'note_holders',
+        icon: 'solar:notes-outline',
+        href: '/cap_table=note_holders',
+        title: 'Note Holders',
       },
       {
-        key: "transactions_log",
-        icon: "solar:clipboard-list-linear",
-        href: "/cap_table=transactions_log",
-        title: "Transactions Log",
+        key: 'transactions_log',
+        icon: 'solar:clipboard-list-linear',
+        href: '/cap_table=transactions_log',
+        title: 'Transactions Log',
       },
     ],
   },
   {
-    key: "expenses",
-    href: "/expenses",
-    icon: "solar:bill-list-outline",
-    title: "Expenses",
+    key: 'expenses',
+    href: '/expenses',
+    icon: 'solar:bill-list-outline',
+    title: 'Expenses',
   },
 ];

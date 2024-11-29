@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { Accordion, AccordionItem } from "@nextui-org/accordion";
+import { Accordion, AccordionItem } from '@nextui-org/accordion';
 import {
   Listbox,
   ListboxItem,
   ListboxSection,
   type ListboxProps,
   type ListboxSectionProps,
-} from "@nextui-org/listbox";
+} from '@nextui-org/listbox';
 
-import type { SharedSelection } from "@nextui-org/system";
-import React, { forwardRef, Key, useCallback } from "react";
-import { Tooltip } from "@nextui-org/tooltip";
-import { Icon } from "@iconify/react";
-import { cn } from "@nextui-org/theme";
-import useDashboardLayoutStore from "@/hooks/use-dashboard-layout";
+import type { SharedSelection } from '@nextui-org/system';
+import React, { forwardRef, Key, useCallback } from 'react';
+import { Tooltip } from '@nextui-org/tooltip';
+import { Icon } from '@iconify/react';
+import { cn } from '@nextui-org/theme';
+import useDashboardLayoutStore from '@/hooks/use-dashboard-layout';
 
 export enum SidebarItemType {
-  nested = "nested",
+  nested = 'nested',
 }
 
 export type SidebarItem = {
@@ -32,13 +32,13 @@ export type SidebarItem = {
   itemType?: SidebarItemType;
 };
 
-export type SidebarProps = Omit<ListboxProps<SidebarItem>, "children"> & {
+export type SidebarProps = Omit<ListboxProps<SidebarItem>, 'children'> & {
   items: SidebarItem[];
   isCompact?: boolean;
   hideEndContent?: boolean;
   iconClassName?: string;
-  sectionClasses?: ListboxSectionProps["classNames"];
-  classNames?: ListboxProps["classNames"];
+  sectionClasses?: ListboxSectionProps['classNames'];
+  classNames?: ListboxProps['classNames'];
   selected?: string;
   onNavigate?: (key?: string) => void;
 };
@@ -57,18 +57,17 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
     onNavigate,
     ...props
   },
-  ref
+  ref,
 ) {
-
-  const {onOpen} = useDashboardLayoutStore();
+  const { onOpen } = useDashboardLayoutStore();
 
   const sectionClasses = {
     ...sectionClassesProp,
     base: cn(sectionClassesProp?.base, {
-      "p-0 max-w-[44px]": isCompact,
+      'p-0 max-w-[44px]': isCompact,
     }),
     group: cn(sectionClassesProp?.group, {
-      "flex flex-col gap-1": isCompact,
+      'flex flex-col gap-1': isCompact,
     }),
     heading: cn(sectionClassesProp?.heading, {
       hidden: isCompact,
@@ -78,16 +77,14 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
   const itemClasses = {
     ...itemClassesProp,
     base: cn(itemClassesProp?.base, {
-      "w-11 h-11 gap-0 p-0": isCompact,
+      'w-11 h-11 gap-0 p-0': isCompact,
     }),
   };
 
   const renderNestItem = useCallback(
     (item: SidebarItem) => {
       const isNestType =
-        item.itemType === SidebarItemType.nested &&
-        item.items &&
-        item.items?.length > 0;
+        item.itemType === SidebarItemType.nested && item.items && item.items?.length > 0;
 
       if (isNestType) {
         delete item.href;
@@ -101,69 +98,72 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
           classNames={{
             base: cn(
               {
-                "h-auto p-0": !isCompact && isNestType,
+                'h-auto p-0': !isCompact && isNestType,
               },
               {
-                "inline-block w-11": isCompact && isNestType,
-              }
+                'inline-block w-11': isCompact && isNestType,
+              },
             ),
           }}
           endContent={
-            isCompact || isNestType || hideEndContent
-              ? null
-              : item.endContent ?? null
+            isCompact || isNestType || hideEndContent ? null : (item.endContent ?? null)
           }
           startContent={
             isCompact || isNestType ? null : item.icon ? (
               <Icon
                 className={cn(
-                  "text-default-500 group-data-[selected=true]:text-foreground",
-                  iconClassName
+                  'text-default-500 group-data-[selected=true]:text-foreground',
+                  iconClassName,
                 )}
                 icon={item.icon}
                 width={24}
               />
             ) : (
-              item.startContent ?? null
+              (item.startContent ?? null)
             )
           }
           title={isCompact || isNestType ? null : item.title}
         >
           {isCompact ? (
             <Tooltip content={item.title} placement="right">
-              <div className="flex w-full items-center justify-center" onClick={()=>{onOpen()}}>
+              <div
+                className="flex w-full items-center justify-center"
+                onClick={() => {
+                  onOpen();
+                }}
+              >
                 {item.icon ? (
                   <Icon
                     className={cn(
-                      "text-default-500 group-data-[selected=true]:text-foreground",
-                      iconClassName
+                      'text-default-500 group-data-[selected=true]:text-foreground',
+                      iconClassName,
                     )}
                     icon={item.icon}
                     width={24}
                   />
                 ) : (
-                  item.startContent ?? null
+                  (item.startContent ?? null)
                 )}
               </div>
             </Tooltip>
           ) : null}
           {!isCompact && isNestType ? (
-            <Accordion className={"p-0"}>
+            <Accordion className={'p-0'}>
               <AccordionItem
                 key={item.key}
                 aria-label={item.title}
                 classNames={{
-                  heading: "pr-3",
-                  trigger: "p-0",
-                  content: "py-0 pl-4",
+                  heading: 'pr-3',
+                  trigger: 'p-0',
+                  content: 'py-0 pl-4',
                 }}
                 title={
                   item.icon ? (
-                    <div className={"flex h-11 items-center gap-2 px-2 py-1.5"}>
+                    <div className={'flex h-11 items-center gap-2 px-2 py-1.5'}>
                       <Icon
                         className={cn(
-                          "text-default-500 group-data-[selected=true]:text-foreground",
-                          iconClassName
+                          'text-default-500 group-data-[selected=true]:text-foreground',
+                          iconClassName,
                         )}
                         icon={item.icon}
                         width={24}
@@ -173,15 +173,15 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
                       </span>
                     </div>
                   ) : (
-                    item.startContent ?? null
+                    (item.startContent ?? null)
                   )
                 }
               >
                 {item.items && item.items?.length > 0 ? (
                   <Listbox
-                    className={"mt-0.5"}
+                    className={'mt-0.5'}
                     classNames={{
-                      list: cn("border-l border-default-200 pl-4"),
+                      list: cn('border-l border-default-200 pl-4'),
                     }}
                     items={item.items}
                     variant="flat"
@@ -198,15 +198,13 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
         </ListboxItem>
       );
     },
-    [isCompact, hideEndContent, iconClassName, items, onOpen]
+    [isCompact, hideEndContent, iconClassName, items, onOpen],
   );
 
   const renderItem = useCallback(
     (item: SidebarItem) => {
       const isNestType =
-        item.itemType === SidebarItemType.nested &&
-        item.items &&
-        item.items?.length > 0;
+        item.itemType === SidebarItemType.nested && item.items && item.items?.length > 0;
 
       if (isNestType) {
         return renderNestItem(item);
@@ -218,23 +216,21 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
           key={item.key}
           aria-label="sidebarItem"
           classNames={{
-            base: cn("min-h-11", itemClasses?.base),
+            base: cn('min-h-11', itemClasses?.base),
           }}
-          endContent={
-            isCompact || hideEndContent ? null : item.endContent ?? null
-          }
+          endContent={isCompact || hideEndContent ? null : (item.endContent ?? null)}
           startContent={
             isCompact ? null : item.icon ? (
               <Icon
                 className={cn(
-                  "text-default-500 group-data-[selected=true]:text-foreground",
-                  iconClassName
+                  'text-default-500 group-data-[selected=true]:text-foreground',
+                  iconClassName,
                 )}
                 icon={item.icon}
                 width={24}
               />
             ) : (
-              item.startContent ?? null
+              (item.startContent ?? null)
             )
           }
           textValue={item.title}
@@ -246,14 +242,14 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
                 {item.icon ? (
                   <Icon
                     className={cn(
-                      "text-default-500 group-data-[selected=true]:text-foreground",
-                      iconClassName
+                      'text-default-500 group-data-[selected=true]:text-foreground',
+                      iconClassName,
                     )}
                     icon={item.icon}
                     width={24}
                   />
                 ) : (
-                  item.startContent ?? null
+                  (item.startContent ?? null)
                 )}
               </div>
             </Tooltip>
@@ -261,10 +257,7 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
         </ListboxItem>
       );
     },
-    [
-      itemClasses?.base,
-      renderNestItem,
-    ]
+    [itemClasses?.base, renderNestItem],
   );
 
   return (
@@ -273,21 +266,21 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
       hideSelectedIcon
       as="nav"
       aria-label="sidebar"
-      className={cn("list-none", className)}
+      className={cn('list-none', className)}
       classNames={{
         ...classNames,
-        list: cn("items-center", classNames?.list),
+        list: cn('items-center', classNames?.list),
       }}
       color="default"
       itemClasses={{
         ...itemClasses,
         base: cn(
-          "px-3 rounded-large h-[44px] data-[selected=true]:bg-default-100",
-          itemClasses?.base
+          'px-3 rounded-large h-[44px] data-[selected=true]:bg-default-100',
+          itemClasses?.base,
         ),
         title: cn(
-          "text-small font-medium text-default-500 group-data-[selected=true]:text-foreground",
-          itemClasses?.title
+          'text-small font-medium text-default-500 group-data-[selected=true]:text-foreground',
+          itemClasses?.title,
         ),
       }}
       selectedKeys={[selected] as unknown as SharedSelection}
