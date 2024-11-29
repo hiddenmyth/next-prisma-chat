@@ -10,13 +10,14 @@ import {
 } from '@nextui-org/listbox';
 
 import type { SharedSelection } from '@nextui-org/system';
-import React, { forwardRef, Key, useCallback } from 'react';
+import React, { forwardRef, useCallback } from 'react';
 import { Tooltip } from '@nextui-org/tooltip';
 import { Icon } from '@iconify/react';
 import { cn } from '@nextui-org/theme';
 import useDashboardLayoutStore from '@/hooks/use-dashboard-layout';
 
 export enum SidebarItemType {
+  // eslint-disable-next-line no-unused-vars
   nested = 'nested',
 }
 
@@ -40,7 +41,8 @@ export type SidebarProps = Omit<ListboxProps<SidebarItem>, 'children'> & {
   sectionClasses?: ListboxSectionProps['classNames'];
   classNames?: ListboxProps['classNames'];
   selected?: string;
-  onNavigate?: (key?: string) => void;
+  // eslint-disable-next-line no-unused-vars
+  onNavigate?: (_key?: string) => void;
 };
 
 const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
@@ -198,6 +200,7 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
         </ListboxItem>
       );
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [isCompact, hideEndContent, iconClassName, items, onOpen],
   );
 
@@ -257,7 +260,7 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
         </ListboxItem>
       );
     },
-    [itemClasses?.base, renderNestItem],
+    [hideEndContent, iconClassName, isCompact, itemClasses?.base, renderNestItem],
   );
 
   return (

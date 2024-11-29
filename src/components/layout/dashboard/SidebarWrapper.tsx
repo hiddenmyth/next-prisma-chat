@@ -9,7 +9,7 @@ import ProfileAvatar from './ProfileAvatar';
 import { Fragment, ReactNode, useCallback, useState } from 'react';
 import useOrganizationStore from '@/hooks/use-organizations';
 import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/popover';
-import { Listbox, ListboxItem, ListboxSection } from '@nextui-org/listbox';
+import { Listbox, ListboxItem } from '@nextui-org/listbox';
 import { Icon } from '@iconify/react/dist/iconify.js';
 
 export default function SidebarWrapper({
@@ -24,12 +24,9 @@ export default function SidebarWrapper({
   isMoved?: boolean;
 }) {
   const [selected, setSelected] = useState<string | undefined>('home');
-  const onSelect = useCallback(
-    (key?: string) => {
-      setSelected(key);
-    },
-    [sectionNestedItems],
-  );
+  const onSelect = useCallback((key?: string) => {
+    setSelected(key);
+  }, []);
 
   const { data, currentOrganization, setCurrentOrganiazation } = useOrganizationStore();
 
