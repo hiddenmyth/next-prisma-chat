@@ -8,11 +8,14 @@ export interface IOrganization {
 
 export interface IOrganizationStore {
   data: IOrganization[];
-  setData: (val: IOrganization[]) => void;
+  // eslint-disable-next-line no-unused-vars
+  setData: (_val: IOrganization[]) => void;
   currentOrganization: IOrganization | undefined;
-  setCurrentOrganiazation: (val?: IOrganization) => void;
+  // eslint-disable-next-line no-unused-vars
+  setCurrentOrganiazation: (_val?: IOrganization) => void;
 }
 
+// eslint-disable-next-line no-unused-vars
 const useOrganizationStore = create<IOrganizationStore>((set, get) => ({
   data: [
     { name: 'NextUI', description: 'Frontend Library' },

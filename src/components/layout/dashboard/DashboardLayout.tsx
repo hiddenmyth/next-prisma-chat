@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useCallback, useEffect, useState } from 'react';
+import { ReactNode, useCallback } from 'react';
 import SidebarModalWrapper from './SidebarModalWrapper';
 import SidebarWrapper from './SidebarWrapper';
 import { useMediaQuery } from 'usehooks-ts';
@@ -12,15 +12,8 @@ import { cn } from '@nextui-org/theme';
 import useDashboardLayoutStore from '@/hooks/use-dashboard-layout';
 
 export default function DashboardLayoutComponent({ children }: { children: ReactNode }) {
-  const {
-    isCollapsed,
-    onClose,
-    onOpen,
-    onOpenChange,
-    setIsCollapsed,
-    setIsColorful,
-    isColorful,
-  } = useDashboardLayoutStore();
+  const { isCollapsed, onClose, onOpenChange, setIsColorful, isColorful } =
+    useDashboardLayoutStore();
 
   const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -39,7 +32,7 @@ export default function DashboardLayoutComponent({ children }: { children: React
               isSelected={isColorful}
               onValueChange={setIsColorful}
             >
-              {!!props.isOpen ? 'Colorful' : null}
+              {props.isOpen ? 'Colorful' : null}
             </Switch>
           </div>
           <ThemeSwitcher
@@ -74,7 +67,7 @@ export default function DashboardLayoutComponent({ children }: { children: React
         </div>
       );
     },
-    [isColorful, isCollapsed, isMobile],
+    [isColorful, setIsColorful],
   );
 
   return (
