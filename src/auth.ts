@@ -14,6 +14,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
 export const providers = authConfig.providers.map((provider) => ({
   id: provider.id,
-  style: provider.style,
   name: provider.name,
 }));

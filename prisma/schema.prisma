@@ -56,6 +56,7 @@ model User {
   posts         Post[]
   accounts      Account[]
   sessions      Session[]
+  password      String?
 }
 
 model VerificationToken {
