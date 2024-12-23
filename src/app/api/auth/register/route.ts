@@ -24,6 +24,7 @@ export async function POST(req: NextRequest) {
       body: result,
     });
   } catch (error) {
+    console.error(error);
     if (error instanceof PrismaClientKnownRequestError) {
       return NextResponse.json(
         {
