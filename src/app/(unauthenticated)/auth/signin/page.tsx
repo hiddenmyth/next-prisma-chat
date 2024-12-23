@@ -108,7 +108,9 @@ export default function SignInPage() {
           provider.id !== 'credentials' ? (
             <Button
               onClick={async () => {
-                signIn(provider.id);
+                signIn(provider.id, {
+                  redirectTo: redirectTo ?? '/dashboard',
+                });
               }}
               key={provider.id}
               variant="faded"
