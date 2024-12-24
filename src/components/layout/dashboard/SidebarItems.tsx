@@ -41,16 +41,14 @@ export const sectionNestedItems: SidebarItem[] = [
   },
   
   {
-    key: 'tasks',
-    href: '/dashboard/tasks',
-    icon: 'solar:checklist-minimalistic-outline',
-    title: 'Tasks',
+    key: 'chat',
+    href: '/dashboard/chat',
+    icon: 'solar:chat-round-dots-broken',
+    title: 'Chat',
     endContent: (
-      <Icon
-        className="text-default-400"
-        icon="solar:add-circle-line-duotone"
-        width={24}
-      />
+      <Chip size="sm" variant="flat">
+        New
+      </Chip>
     ),
   },
   {
@@ -59,9 +57,11 @@ export const sectionNestedItems: SidebarItem[] = [
     icon: 'solar:sort-by-time-linear',
     title: 'Tracker',
     endContent: (
-      <Chip size="sm" variant="flat">
-        New
-      </Chip>
+      <Icon
+        className="text-default-400"
+        icon="solar:add-circle-line-duotone"
+        width={24}
+      />
     ),
   },
   {

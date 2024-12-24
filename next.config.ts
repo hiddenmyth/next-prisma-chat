@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
       {
         hostname: 'authjs.dev',
       },
+      {
+        hostname: 'nextuipro.nyc3.cdn.digitaloceanspaces.com',
+      },
     ],
   },
 };
