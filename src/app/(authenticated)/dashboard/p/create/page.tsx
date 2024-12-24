@@ -27,9 +27,8 @@ const Draft: React.FC = () => {
   };
 
   return (
-    <DashboardPageWrapper>
+    <DashboardPageWrapper title="New Draft" subtitle="Create a new draft">
       <form onSubmit={submitData} className="w-full flex flex-col gap-4">
-        <h1>New Draft</h1>
         <Input
           autoFocus
           onChange={(e) => setTitle(e.target.value)}

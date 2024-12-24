@@ -25,7 +25,7 @@ export default function DashboardLayoutComponent({ children }: { children: React
             'pr-6': props.isOpen,
           })}
         >
-          <div className={cn({ 'pl-3': !!props.isOpen })}>
+          <div className={cn({ 'pl-3': !!props.isOpen, '-rotate-90 mb-4': !props.isOpen })}>
             <Switch
               size="sm"
               color="secondary"

@@ -3,10 +3,10 @@ import DashboardPageWrapper from '@/components/layout/dashboard/DashboardPageWra
 import ProfileAvatar from '@/components/layout/dashboard/ProfileAvatar';
 import Link from 'next/link';
 
-export default async function DashboardIndexPage() {
+export default async function FeedsPage() {
   const posts = await getPosts();
   return (
-    <DashboardPageWrapper title={'Home'} subtitle={'Home page ...'}>
+    <DashboardPageWrapper title={'Feeds'} subtitle={'My Feeds'}>
       <div className="flex flex-col gap-2 w-full">
         {posts.map((post) => (
           <Link

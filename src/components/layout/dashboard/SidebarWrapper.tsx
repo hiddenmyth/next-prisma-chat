@@ -6,11 +6,12 @@ import { sectionNestedItems } from './SidebarItems';
 import Sidebar from './Sidebar';
 import { cn } from '@nextui-org/theme';
 import ProfileAvatar from './ProfileAvatar';
-import { Fragment, ReactNode, useCallback, useState } from 'react';
+import { Fragment, ReactNode, useEffect, useMemo, useState } from 'react';
 import useOrganizationStore from '@/hooks/use-organizations';
 import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/popover';
 import { Listbox, ListboxItem } from '@nextui-org/listbox';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import { usePathname } from 'next/navigation';
 
 export default function SidebarWrapper({
   isColorful,
@@ -24,9 +25,43 @@ export default function SidebarWrapper({
   isMoved?: boolean;
 }) {
   const [selected, setSelected] = useState<string | undefined>('home');
-  const onSelect = useCallback((key?: string) => {
-    setSelected(key);
-  }, []);
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+    sectionNestedItems.forEach(item => {
+      if (item.href === pathname) {
+        setSelected(item.key);
+      }
+      if (item.items) {
+        item.items.forEach(subItem => {
+          if (subItem.href === pathname) {
+            setSelected(subItem.key);
+          }
+        });
+      }
+    })
+  }, [pathname]);
+
+  const sidebarItems = useMemo(()=>{
+    return sectionNestedItems.map((item) => {
+      if (item.items) {
+        const hasSelected = item.items.some((subItem) => subItem.key === selected)
+        return {
+          ...item,
+          items: item.items.map((subItem) => ({
+            ...subItem,
+            selected: selected === subItem.key,
+          })),
+          selected: hasSelected
+        };
+      }
+      return {
+        ...item,
+        selected: selected === item.key,
+      };
+    });
+  }, [selected])
 
   const { data, currentOrganization, setCurrentOrganiazation } = useOrganizationStore();
 
@@ -70,7 +105,9 @@ export default function SidebarWrapper({
               </Fragment>
             ) : (
               <Fragment>
-                <Icon icon="solar:question-circle-broken" width={32} />
+                <ProfileAvatar size="lg">
+                  <Icon icon="akar-icons:organization" width={24} />
+                </ProfileAvatar>
                 {!isCompact && (
                   <div className="flex flex-col">
                     <p className="text-small font-medium text-default-500">
@@ -124,12 +161,7 @@ export default function SidebarWrapper({
           '-mr-2 py-2 pr-2': isCompact,
         })}
       >
-        <Sidebar
-          items={sectionNestedItems}
-          isCompact={isCompact}
-          selected={selected}
-          onNavigate={onSelect}
-        />
+        <Sidebar items={sidebarItems} isCompact={isCompact} />
       </ScrollShadow>
 
       <Spacer y={8} />

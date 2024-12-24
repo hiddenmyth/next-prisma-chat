@@ -15,6 +15,7 @@ import { Tooltip } from '@nextui-org/tooltip';
 import { Icon } from '@iconify/react';
 import { cn } from '@nextui-org/theme';
 import useDashboardLayoutStore from '@/hooks/use-dashboard-layout';
+import Link from 'next/link';
 
 export enum SidebarItemType {
   // eslint-disable-next-line no-unused-vars
@@ -31,6 +32,7 @@ export type SidebarItem = {
   items?: SidebarItem[];
   className?: string;
   itemType?: SidebarItemType;
+  selected?: boolean;
 };
 
 export type SidebarProps = Omit<ListboxProps<SidebarItem>, 'children'> & {
@@ -40,7 +42,6 @@ export type SidebarProps = Omit<ListboxProps<SidebarItem>, 'children'> & {
   iconClassName?: string;
   sectionClasses?: ListboxSectionProps['classNames'];
   classNames?: ListboxProps['classNames'];
-  selected?: string;
   // eslint-disable-next-line no-unused-vars
   onNavigate?: (_key?: string) => void;
 };
@@ -55,7 +56,6 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
     iconClassName,
     classNames,
     className,
-    selected,
     onNavigate,
     ...props
   },
@@ -105,6 +105,9 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
               {
                 'inline-block w-11': isCompact && isNestType,
               },
+              {
+                'bg-default-200/50': item.selected,
+              }
             ),
           }}
           endContent={
@@ -125,6 +128,7 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
             )
           }
           title={isCompact || isNestType ? null : item.title}
+          data-selected={item.selected ? true : undefined}
         >
           {isCompact ? (
             <Tooltip content={item.title} placement="right">
@@ -150,7 +154,10 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
             </Tooltip>
           ) : null}
           {!isCompact && isNestType ? (
-            <Accordion className={'p-0'}>
+            <Accordion
+              className={'p-0'}
+              defaultExpandedKeys={item.selected ? [item.key] : undefined}
+            >
               <AccordionItem
                 key={item.key}
                 aria-label={item.title}
@@ -170,7 +177,9 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
                         icon={item.icon}
                         width={24}
                       />
-                      <span className="text-small font-medium text-default-500 group-data-[selected=true]:text-foreground">
+                      <span
+                        className="text-small font-medium text-default-500 group-data-[selected=true]:text-foreground"
+                      >
                         {item.title}
                       </span>
                     </div>
@@ -188,6 +197,7 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
                     items={item.items}
                     variant="flat"
                     aria-label="sidebar"
+                    selectedKeys={item.items.filter((it) => it.selected).map(it => it.key) as unknown as SharedSelection}
                   >
                     {item.items.map(renderItem)}
                   </Listbox>
@@ -216,10 +226,13 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
       return (
         <ListboxItem
           {...item}
+          as={item.href ? Link : undefined}
           key={item.key}
           aria-label="sidebarItem"
           classNames={{
-            base: cn('min-h-11', itemClasses?.base),
+            base: cn('min-h-11', itemClasses?.base, {
+              'bg-default-100/50': item.selected
+            }),
           }}
           endContent={isCompact || hideEndContent ? null : (item.endContent ?? null)}
           startContent={
@@ -278,7 +291,7 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
       itemClasses={{
         ...itemClasses,
         base: cn(
-          'px-3 rounded-large h-[44px] data-[selected=true]:bg-default-100',
+          'px-3 rounded-large h-[44px] data-[selected=true]:bg-default-100/50',
           itemClasses?.base,
         ),
         title: cn(
@@ -286,7 +299,7 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
           itemClasses?.title,
         ),
       }}
-      selectedKeys={[selected] as unknown as SharedSelection}
+      selectedKeys={items.filter((it) => it.selected).map(it => it.key) as unknown as SharedSelection}
       selectionMode="single"
       variant="flat"
       onSelectionChange={(keys: SharedSelection) => {
