@@ -54,7 +54,7 @@ const MessageChatInbox = React.forwardRef<HTMLDivElement, MessageChatInboxProps>
                   aria-label="Search"
                   labelPlacement="outside"
                   placeholder="Search..."
-                  radius="md"
+                  radius="full"
                   startContent={
                     <Icon
                       className="text-default-500 [&>g]:stroke-[2px]"
@@ -68,12 +68,12 @@ const MessageChatInbox = React.forwardRef<HTMLDivElement, MessageChatInboxProps>
               <div className="mt-4">
                 <Tabs
                   fullWidth
-                  classNames={{
-                    cursor: 'group-data-[selected=true]:bg-content1',
-                  }}
                   onSelectionChange={(key) => {
                     setCurrentTab(key as 'inbox' | 'unread');
                   }}
+                  variant='solid'
+                  color='primary'
+                  radius='full'
                   selectedKey={currentTab}
                 >
                   <Tab key="inbox" title="Inbox" />

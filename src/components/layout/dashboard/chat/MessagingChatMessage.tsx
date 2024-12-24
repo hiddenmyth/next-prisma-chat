@@ -29,7 +29,7 @@ const MessagingChatMessage = React.forwardRef<HTMLDivElement, MessagingChatMessa
 
     const Message = () => (
       <div className="flex w-full flex-col gap-4">
-        <div className={cn("relative w-full rounded-lg px-4 py-3", {
+        <div className={cn("relative w-full rounded-2xl px-4 py-3", {
           "bg-content2 text-default-600": !me,
           "bg-primary-400 !text-white": me,
         }, {
@@ -63,7 +63,7 @@ const MessagingChatMessage = React.forwardRef<HTMLDivElement, MessagingChatMessa
       <div
         {...props}
         ref={ref}
-        className={cn("flex gap-3", {"flex-row-reverse": me}, className)}
+        className={cn("flex gap-3 items-end", {"flex-row-reverse": me}, className)}
       >
         <MessageAvatar />
         <Message />

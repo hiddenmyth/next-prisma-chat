@@ -29,31 +29,31 @@ export default function SidebarWrapper({
   const pathname = usePathname();
 
   useEffect(() => {
-    sectionNestedItems.forEach(item => {
-      if (item.href === pathname) {
+    sectionNestedItems.forEach((item) => {
+      if (item.href && pathname.startsWith(item.href)) {
         setSelected(item.key);
       }
       if (item.items) {
-        item.items.forEach(subItem => {
-          if (subItem.href === pathname) {
+        item.items.forEach((subItem) => {
+          if (subItem.href && pathname.startsWith(subItem.href)) {
             setSelected(subItem.key);
           }
         });
       }
-    })
+    });
   }, [pathname]);
 
-  const sidebarItems = useMemo(()=>{
+  const sidebarItems = useMemo(() => {
     return sectionNestedItems.map((item) => {
       if (item.items) {
-        const hasSelected = item.items.some((subItem) => subItem.key === selected)
+        const hasSelected = item.items.some((subItem) => subItem.key === selected);
         return {
           ...item,
           items: item.items.map((subItem) => ({
             ...subItem,
             selected: selected === subItem.key,
           })),
-          selected: hasSelected
+          selected: hasSelected,
         };
       }
       return {
@@ -61,7 +61,7 @@ export default function SidebarWrapper({
         selected: selected === item.key,
       };
     });
-  }, [selected])
+  }, [selected]);
 
   const { data, currentOrganization, setCurrentOrganiazation } = useOrganizationStore();
 
