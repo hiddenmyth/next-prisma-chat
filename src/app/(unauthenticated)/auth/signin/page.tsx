@@ -76,6 +76,7 @@ export default function SignInPage() {
             render={({ field, fieldState }) => (
               <Input
                 {...field}
+                label="Email"
                 errorMessage={fieldState.error?.message}
                 isInvalid={fieldState.invalid}
                 suppressHydrationWarning
@@ -88,6 +89,7 @@ export default function SignInPage() {
             render={({ field, fieldState }) => (
               <Input
                 {...field}
+                label="Password"
                 type="password"
                 errorMessage={fieldState.error?.message}
                 isInvalid={fieldState.invalid}
