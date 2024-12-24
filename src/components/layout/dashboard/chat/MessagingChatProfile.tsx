@@ -3,7 +3,7 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 
-import MessagingChatHeader from './MessageChatHeader';
+import MessagingChatHeader from './MessagingChatHeader';
 import messageInteractions from './data/messaging-interactions';
 import dummyImages from './data/dummy-images';
 import { ScrollShadow } from '@nextui-org/scroll-shadow';
@@ -27,7 +27,7 @@ const MessagingChatProfile = React.forwardRef<HTMLDivElement, MessagingChatProfi
     return (
       <div ref={ref} {...props}>
         <div className="w-full h-full flex flex-col">
-          <MessagingChatHeader className="hidden sm:flex lg:hidden" />
+          <MessagingChatHeader className="flex lg:hidden" />
           <div className="h-full relative w-full overflow-auto border-t-small border-default-200 lg:border-none">
             {currentChat ? (
               <ScrollShadow className="flex h-full flex-col gap-1 overflow-y-auto p-2">

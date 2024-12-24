@@ -7,8 +7,8 @@ import { MessagingChatMessageProps } from '@/components/layout/dashboard/chat/Me
 import { create } from 'zustand';
 
 export interface IChatStore {
-  isCompact: boolean;
-  setIsCompact: (val: boolean) => void;
+  isFloating: boolean;
+  setIsFloating: (val: boolean) => void;
   setCurrentChatId: (val?: string) => void;
   page: number;
   direction: number;
@@ -22,9 +22,9 @@ export interface IChatStore {
 }
 
 export const useChatStore = create<IChatStore>((set, get) => ({
-  isCompact: false,
-  setIsCompact: (val) => {
-    set({ isCompact: val });
+  isFloating: false,
+  setIsFloating: (val) => {
+    set({ isFloating: val });
   },
   setCurrentChatId: (val) => {
     if (!val) return { currentChat: undefined, messages: [] };

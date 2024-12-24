@@ -29,12 +29,15 @@ const MessagingChatMessage = React.forwardRef<HTMLDivElement, MessagingChatMessa
 
     const Message = () => (
       <div className="flex w-full flex-col gap-4">
-        <div className={cn("relative w-full rounded-medium px-4 py-3", {
+        <div className={cn("relative w-full rounded-lg px-4 py-3", {
           "bg-content2 text-default-600": !me,
-          "bg-primary-400 text-white": me,
+          "bg-primary-400 !text-white": me,
+        }, {
+          "!rounded-br-none": me,
+          "!rounded-bl-none": !me
         })}>
           <div className="flex">
-            <div className="w-full text-small font-semibold text-default-foreground">{name}</div>
+            <div className="w-full text-small font-semibold">{name}</div>
             <div className={cn("flex-end text-small", {
               " text-default-400": !me,
               "text-white/60": me,

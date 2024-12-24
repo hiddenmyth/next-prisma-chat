@@ -4,8 +4,8 @@ import React, { useEffect, useRef } from 'react';
 import { Icon } from '@iconify/react';
 
 import MessagingChatMessage from './MessagingChatMessage';
-import MessagingChatInput from './MessageChatInput';
-import MessagingChatHeader from './MessageChatHeader';
+import MessagingChatInput from './MessagingChatInput';
+import MessagingChatHeader from './MessagingChatHeader';
 import {
   Dropdown,
   DropdownItem,
@@ -15,47 +15,27 @@ import {
 import { Button } from '@nextui-org/button';
 import { ScrollShadow } from '@nextui-org/scroll-shadow';
 import { useChatStore } from '@/hooks/use-chat';
-import { useIntersectionObserver, useMediaQuery } from 'usehooks-ts';
 
 export type MessagingChatWindowProps = React.HTMLAttributes<HTMLDivElement> & {
-  // eslint-disable-next-line no-unused-vars
+  viewProfileAction: () => void;
 };
 
 const MessagingChatWindow = React.forwardRef<HTMLDivElement, MessagingChatWindowProps>(
-  ({ ...props }, ref) => {
-    const { currentChat, paginate, toggleShowProfile, messages } = useChatStore();
-    const isCompact = useMediaQuery("(max-width: 1024px)");
-
-    const viewProfileAction = () => {
-      if (!isCompact) {
-        toggleShowProfile();
-      } else {
-        paginate?.(1);
-      }
-    }
+  ({ viewProfileAction, ...props }, ref) => {
+    const { currentChat, messages } = useChatStore();
 
     const scrollerRef = useRef<HTMLDivElement>(null);
-
-    // eslint-disable-next-line no-unused-vars
-    const { isIntersecting } = useIntersectionObserver({
-      threshold: 0.5,
-      onChange(isIntersecting) {
-        if (isIntersecting) {
-          console.log ('Reached the bottom of the chat window');
-        }
-      },
-    })
 
     useEffect(() => {
       if (scrollerRef.current) {
         scrollerRef.current.scrollTop = scrollerRef.current.scrollHeight;
       }
-    }, [currentChat?.id])
+    }, [currentChat?.id]);
 
     return (
       <div ref={ref} {...props}>
         <div className="w-full relative flex flex-col sm:border-default-200 lg:border-l-small xl:border-r-small h-full">
-          <MessagingChatHeader className="hidden sm:flex lg:hidden" />
+          <MessagingChatHeader className="flex lg:hidden" />
           <div className="h-17 flex items-center gap-2 border-y-small border-default-200 p-3 sm:p-4 lg:border-t-0">
             <div className="w-full">
               <div className="text-small font-semibold">
@@ -76,10 +56,9 @@ const MessagingChatWindow = React.forwardRef<HTMLDivElement, MessagingChatWindow
                       viewProfileAction();
                     }
                   }}
+                  disabledKeys={!currentChat ? 'all' : ['mark_as_spam', 'delete']}
                 >
-                  <DropdownItem key="view_profile">
-                    View Profile
-                  </DropdownItem>
+                  <DropdownItem key="view_profile">View Profile</DropdownItem>
                   <DropdownItem key="mark_as_spam">Mark as spam</DropdownItem>
                   <DropdownItem key="delete" className="text-danger">
                     Delete
@@ -90,7 +69,11 @@ const MessagingChatWindow = React.forwardRef<HTMLDivElement, MessagingChatWindow
           </div>
           <div className="flex flex-1 w-full overflow-auto">
             {currentChat ? (
-              <ScrollShadow ref={scrollerRef} visibility='top' className="flex max-h-full flex-col-reverse gap-6 px-6 py-4">
+              <ScrollShadow
+                ref={scrollerRef}
+                visibility="top"
+                className="flex max-h-full flex-col-reverse gap-6 px-6 py-4"
+              >
                 {messages.reverse().map((messagingChatConversation, idx) => (
                   <MessagingChatMessage key={idx} {...messagingChatConversation} />
                 ))}
@@ -101,7 +84,7 @@ const MessagingChatWindow = React.forwardRef<HTMLDivElement, MessagingChatWindow
               </div>
             )}
           </div>
-          <div className="mx-2 mt-auto flex flex-col">
+          <div className="mx-2 mt-auto flex flex-col pb-2">
             <MessagingChatInput />
           </div>
         </div>

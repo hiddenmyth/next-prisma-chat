@@ -49,7 +49,7 @@ const MessagingChatInput = React.forwardRef<HTMLInputElement, MessagingChatInput
           </div>
         }
         placeholder=""
-        radius="lg"
+        radius="full"
         startContent={
           <Tooltip showArrow content="Add file">
             <Button isIconOnly radius="full" variant="light">
