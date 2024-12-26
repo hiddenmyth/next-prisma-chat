@@ -34,9 +34,9 @@ const MessagingChatWindow = React.forwardRef<HTMLDivElement, MessagingChatWindow
 
     return (
       <div ref={ref} {...props}>
-        <div className="w-full relative flex flex-col sm:border-default-200 lg:border-l-small xl:border-r-small h-full">
+        <div className="w-full relative flex flex-col sm:border-default-200 lg:border-l-small h-full">
           <MessagingChatHeader className="flex lg:hidden" />
-          <div className="h-17 flex items-center gap-2 border-y-small border-default-200 p-3 sm:p-4 lg:border-t-0">
+          <div className="h-17 flex items-center gap-2 border-y-small border-default-200 p-2 sm:p-3 lg:border-t-0">
             <div className="w-full">
               <div className="text-small font-semibold">
                 Application for launch promotion
@@ -67,12 +67,12 @@ const MessagingChatWindow = React.forwardRef<HTMLDivElement, MessagingChatWindow
               </Dropdown>
             </div>
           </div>
-          <div className="flex flex-1 w-full overflow-auto">
+          <div className="flex flex-1 overflow-auto relative">
             {currentChat ? (
               <ScrollShadow
                 ref={scrollerRef}
                 visibility="top"
-                className="flex max-h-full flex-col-reverse gap-6 px-6 py-4"
+                className="flex max-h-full w-full flex-col-reverse gap-2 px-6 py-4"
               >
                 {messages.reverse().map((messagingChatConversation, idx) => (
                   <MessagingChatMessage key={idx} {...messagingChatConversation} />

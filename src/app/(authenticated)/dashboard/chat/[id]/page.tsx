@@ -54,7 +54,9 @@ export default function ChatIndivPage() {
     <>
       <MessagingChatWindow
         viewProfileAction={viewProfileAction}
-        className="min-w-[24rem] flex-1 overflow-hidden"
+        className={cn("min-w-[24rem] flex-1 overflow-hidden", {
+          "xl:border-r-small border-divider": showProfile
+        })}
       />
 
       {!isLarge ? (

@@ -13,6 +13,8 @@ import { Tabs, Tab } from '@nextui-org/tabs';
 import { ScrollShadow } from '@nextui-org/scroll-shadow';
 import { useChatStore } from '@/hooks/use-chat';
 import { Chip } from '@nextui-org/chip';
+import { Divider } from '@nextui-org/divider';
+import { Button } from '@nextui-org/button';
 
 export type MessageChatInboxProps = React.HTMLAttributes<HTMLDivElement> & {
   // eslint-disable-next-line no-unused-vars
@@ -41,39 +43,40 @@ const MessageChatInbox = React.forwardRef<HTMLDivElement, MessageChatInboxProps>
         <div className="w-full relative flex flex-col h-full">
           <div className="flex w-full items-center justify-between px-3 py-3 sm:px-6">
             <div className="flex w-full gap-1 items-center text-large font-bold text-foreground justify-start">
-              <h2 className="text-large font-bold text-foreground">Chats</h2>
+              <h2 className="text-xl font-bold text-foreground">Chats</h2>
               <Chip size="sm" variant="flat">
                 24
               </Chip>
             </div>
           </div>
-          <div className="mb-6 flex flex-col gap-4 px-3 sm:px-6">
+          <div className="mb-4 flex flex-col gap-2 px-3 sm:px-6">
             <div>
-              <div className="mb-4 lg:mb-4">
-                <Input
-                  aria-label="Search"
-                  labelPlacement="outside"
-                  placeholder="Search..."
-                  radius="full"
-                  startContent={
-                    <Icon
-                      className="text-default-500 [&>g]:stroke-[2px]"
-                      icon="solar:magnifer-linear"
-                      width={18}
-                    />
-                  }
-                  variant="bordered"
-                />
-              </div>
-              <div className="mt-4">
+              <Input
+                aria-label="Search"
+                labelPlacement="outside"
+                placeholder="Search..."
+                radius="full"
+                isClearable
+                startContent={
+                  <Icon
+                    className="text-default-500 [&>g]:stroke-[2px]"
+                    icon="solar:magnifer-linear"
+                    width={18}
+                  />
+                }
+                variant="bordered"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="flex-1 relative">
                 <Tabs
                   fullWidth
                   onSelectionChange={(key) => {
                     setCurrentTab(key as 'inbox' | 'unread');
                   }}
-                  variant='solid'
-                  color='primary'
-                  radius='full'
+                  variant="bordered"
+                  color="primary"
+                  radius="full"
                   selectedKey={currentTab}
                 >
                   <Tab key="inbox" title="Inbox" />
@@ -81,16 +84,22 @@ const MessageChatInbox = React.forwardRef<HTMLDivElement, MessageChatInboxProps>
                   <Tab key="unread" title="Unread" />
                 </Tabs>
               </div>
+              <div>
+                <Button isIconOnly radius='full' color="primary">
+                  <Icon icon="solar:chat-round-dots-broken" width={18} />
+                </Button>
+              </div>
             </div>
           </div>
-          <ScrollShadow className="flex-1 w-full flex flex-col gap-2 overflow-y-auto relative px-2">
+          <Divider />
+          <ScrollShadow className="flex-1 w-full flex flex-col overflow-y-auto relative p-2">
             {chatsToDisplay.map((item: MessagingChatListProps) => (
               <div
                 key={item.id}
                 className={cn(
-                  'relative flex items-center p-2 rounded-lg gap-2 cursor-pointer hover:bg-default-50',
+                  'relative flex items-center px-2 py-4 rounded-lg gap-2 cursor-pointer hover:bg-primary-50 transition-colors',
                   {
-                    'bg-default-100': currentChat && currentChat.id === item.id,
+                    'bg-primary-100': currentChat && currentChat.id === item.id,
                   },
                 )}
                 onClick={() => onChatClick?.(String(item.id))}
@@ -105,7 +114,6 @@ const MessageChatInbox = React.forwardRef<HTMLDivElement, MessageChatInboxProps>
                   <Avatar
                     alt={item.name}
                     className="flex-shrink-0"
-                    size="sm"
                     src={item.avatar}
                   />
                 </Badge>

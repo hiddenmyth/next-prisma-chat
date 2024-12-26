@@ -27,9 +27,9 @@ export const useChatStore = create<IChatStore>((set, get) => ({
     set({ isFloating: val });
   },
   setCurrentChatId: (val) => {
-    if (!val) return { currentChat: undefined, messages: [] };
+    if (!val) return set({ currentChat: undefined, messages: [] });
     const chat = get().chats.find((chat) => String(chat.id) === val);
-    if (!chat) return { currentChat: undefined, messages: [] };
+    if (!chat) return set({ currentChat: undefined, messages: [] });
     set({
       currentChat: chat,
       messages: messagingChatConversations.map((conversation) =>

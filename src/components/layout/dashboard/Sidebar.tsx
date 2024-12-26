@@ -106,7 +106,7 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
                 'inline-block w-11': isCompact && isNestType,
               },
               {
-                'bg-default-200/50': item.selected,
+                'bg-primary-50/50': item.selected,
               }
             ),
           }}
@@ -192,7 +192,7 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
                   <Listbox
                     className={'mt-0.5'}
                     classNames={{
-                      list: cn('border-l border-default-200 pl-4'),
+                      list: cn('border-l border-divider pl-4'),
                     }}
                     items={item.items}
                     variant="flat"
@@ -231,7 +231,7 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
           aria-label="sidebarItem"
           classNames={{
             base: cn('min-h-11', itemClasses?.base, {
-              'bg-default-100/50': item.selected
+              'bg-primary-100/50 font-bold': item.selected
             }),
           }}
           endContent={isCompact || hideEndContent ? null : (item.endContent ?? null)}
@@ -287,11 +287,11 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(function RenderSidebar(
         ...classNames,
         list: cn('items-center', classNames?.list),
       }}
-      color="default"
+      color='primary'
       itemClasses={{
         ...itemClasses,
         base: cn(
-          'px-3 rounded-large h-[44px] data-[selected=true]:bg-default-100/50',
+          'px-3 rounded-large h-[44px] data-[selected=true]:bg-primary-100/50',
           itemClasses?.base,
         ),
         title: cn(

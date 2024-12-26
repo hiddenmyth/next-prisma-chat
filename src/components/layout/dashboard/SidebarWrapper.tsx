@@ -75,7 +75,7 @@ export default function SidebarWrapper({
         },
         {
           'w-72 p-6 pr-0': !isCompact,
-          'w-24 py-6 px-3 items-center': isCompact,
+          'w-20 py-6 px-3 items-center': isCompact,
         },
         {
           '-translate-x-full': isMoved,

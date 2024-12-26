@@ -6,6 +6,7 @@ import { useChatStore } from '@/hooks/use-chat';
 import { useMediaQuery } from 'usehooks-ts';
 import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
 import MessageChatInbox from './MessageChatInbox';
+import { cn } from '@nextui-org/theme';
 
 export default function ChatLayoutComponent(props: { children: ReactNode }) {
   const { direction, page, currentChat, isFloating, paginate, setIsFloating } = useChatStore();
@@ -78,7 +79,9 @@ export default function ChatLayoutComponent(props: { children: ReactNode }) {
             <>
               <MessageChatInbox
                 onChatClick={onChatClick}
-                className="lg:w-72 xl:w-[24rem] overflow-hidden"
+                className={cn("lg:w-72 xl:w-[24rem] overflow-hidden", {
+                  "border-r-1 border-divider": !currentChat
+                })}
               />
               {props.children}
             </>
